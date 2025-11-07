@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Tuple
 
 from ..schemas.orders import OrderRequest, OrderResponse
-from ...core.execution.engine import OrderStatus, SimulationOrder
+from ...core.execution.engine import SimulationOrder
 from ...core import SimulationEngine
 
 
