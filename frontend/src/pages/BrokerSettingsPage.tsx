@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { Save } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -7,8 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import {
-    MotilalCredentialsInput,
-    MotilalCredentialsResponse,
+    type MotilalCredentialsInput,
     fetchMotilalCredentials,
     saveMotilalCredentials,
 } from "@/lib/api";
@@ -29,7 +28,7 @@ function BrokerSettingsPage(): JSX.Element {
             try {
                 const data = await fetchMotilalCredentials();
                 if (data) {
-                    setForm((prev) => ({
+                    setForm((prev: MotilalCredentialsInput) => ({
                         ...prev,
                         api_key: data.api_key,
                         client_code: data.client_code,
@@ -59,7 +58,7 @@ function BrokerSettingsPage(): JSX.Element {
             }
             const response = await saveMotilalCredentials(payload);
             setStatus(`Credentials saved. Updated at ${new Date(response.updated_at).toLocaleString()}`);
-            setForm((prev) => ({ ...prev, auth_token: "", totp_secret: "" }));
+            setForm((prev: MotilalCredentialsInput) => ({ ...prev, auth_token: "", totp_secret: "" }));
         } catch (error) {
             setStatus(error instanceof Error ? error.message : String(error));
         } finally {
@@ -84,7 +83,7 @@ function BrokerSettingsPage(): JSX.Element {
                             <Input
                                 id="apiKey"
                                 value={form.api_key}
-                                onChange={(event) => setForm((prev) => ({ ...prev, api_key: event.target.value }))}
+                                onChange={(event) => setForm((prev: MotilalCredentialsInput) => ({ ...prev, api_key: event.target.value }))}
                                 required
                             />
                         </div>
@@ -93,7 +92,7 @@ function BrokerSettingsPage(): JSX.Element {
                             <Input
                                 id="clientCode"
                                 value={form.client_code}
-                                onChange={(event) => setForm((prev) => ({ ...prev, client_code: event.target.value }))}
+                                onChange={(event) => setForm((prev: MotilalCredentialsInput) => ({ ...prev, client_code: event.target.value }))}
                                 required
                             />
                         </div>
@@ -102,7 +101,7 @@ function BrokerSettingsPage(): JSX.Element {
                             <Input
                                 id="authToken"
                                 value={form.auth_token}
-                                onChange={(event) => setForm((prev) => ({ ...prev, auth_token: event.target.value }))}
+                                onChange={(event) => setForm((prev: MotilalCredentialsInput) => ({ ...prev, auth_token: event.target.value }))}
                                 placeholder="Paste the auth token returned after Motilal login"
                                 required
                             />
@@ -112,7 +111,7 @@ function BrokerSettingsPage(): JSX.Element {
                             <Input
                                 id="totpSecret"
                                 value={form.totp_secret}
-                                onChange={(event) => setForm((prev) => ({ ...prev, totp_secret: event.target.value }))}
+                                onChange={(event) => setForm((prev: MotilalCredentialsInput) => ({ ...prev, totp_secret: event.target.value }))}
                                 placeholder="Enable automatic refresh by supplying the TOTP secret"
                             />
                         </div>

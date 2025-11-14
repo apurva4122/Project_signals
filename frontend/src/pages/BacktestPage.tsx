@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useState } from "react";
 import { Loader2, Play, RefreshCcw } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Instrument, BacktestResponsePayload, BacktestRequestPayload, listInstruments, refreshNifty100, runBacktest } from "@/lib/api";
+import type { Instrument, BacktestResponsePayload, BacktestRequestPayload } from "@/lib/api";
+import { listInstruments, refreshNifty100, runBacktest } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_INITIAL_CAPITAL = 1_000_000;
@@ -59,7 +60,7 @@ function BacktestPage(): JSX.Element {
             const data = await refreshNifty100();
             setInstruments(data);
             setInstrumentStatus(`Loaded ${data.length} instruments from Motilal Oswal.`);
-            if (!data.find((item) => item.symbol === form.symbol) && data.length) {
+            if (!data.find((item: Instrument) => item.symbol === form.symbol) && data.length) {
                 setForm((prev) => ({ ...prev, symbol: data[0]!.symbol }));
             }
         } catch (err) {
