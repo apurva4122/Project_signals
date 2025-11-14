@@ -146,10 +146,15 @@ Desktop.ini
 data/
 *.csv
 *.json
+# Allow essential JSON config files
 !package.json
 !package-lock.json
 !**/package.json
 !**/package-lock.json
+!tsconfig.json
+!**/tsconfig.json
+!**/tsconfig.*.json
+!*.config.json
 configs/*.json
 !configs/*.example.json
 *.db
