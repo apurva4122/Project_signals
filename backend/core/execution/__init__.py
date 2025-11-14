@@ -1,10 +1,10 @@
 """Execution related classes."""
 
-from .engine import (
+from .engine import SimulationEngine
+from .models import (
     OrderSide,
     OrderStatus,
     OrderType,
-    SimulationEngine,
     SimulationFill,
     SimulationOrder,
     SimulationResult,

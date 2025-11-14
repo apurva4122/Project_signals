@@ -6,7 +6,7 @@ from pathlib import Path
 from ...config import get_settings
 from ...config.settings import AppSettings
 from ...services.registry import ServiceRegistry
-from ...services import BacktestingService, InstrumentsService, TradingService
+from ...services import BacktestingService, InstrumentsService, TradingService, MotilalBrokerService
 from ...services.webhooks import WebhookService
 
 
@@ -38,5 +38,9 @@ def get_instruments_service() -> InstrumentsService:
 
 def get_webhook_service() -> WebhookService:
     return _get_registry().webhook_service
+
+
+def get_motilal_service() -> MotilalBrokerService:
+    return _get_registry().motilal_service
 
 

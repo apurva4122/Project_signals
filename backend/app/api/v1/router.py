@@ -2,7 +2,15 @@
 
 from fastapi import APIRouter
 
-from . import routes_accounts, routes_backtests, routes_health, routes_instruments, routes_orders, routes_webhooks
+from . import (
+    routes_accounts,
+    routes_backtests,
+    routes_brokers,
+    routes_health,
+    routes_instruments,
+    routes_orders,
+    routes_webhooks,
+)
 
 router = APIRouter()
 router.include_router(routes_health.router, prefix="/health", tags=["health"])
@@ -11,5 +19,6 @@ router.include_router(routes_accounts.router, prefix="/accounts", tags=["account
 router.include_router(routes_orders.router, prefix="/orders", tags=["orders"])
 router.include_router(routes_backtests.router, prefix="/backtests", tags=["backtests"])
 router.include_router(routes_webhooks.router, prefix="/webhooks", tags=["webhooks"])
+router.include_router(routes_brokers.router, prefix="/brokers", tags=["brokers"])
 
 

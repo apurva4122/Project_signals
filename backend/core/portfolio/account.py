@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from ..execution.engine import OrderSide, SimulationFill
+from ..execution.models import OrderSide, SimulationFill
 
 
 @dataclass(slots=True)

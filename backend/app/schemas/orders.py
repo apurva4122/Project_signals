@@ -4,7 +4,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 
-from ...core.execution.engine import OrderSide, OrderStatus, OrderType
+from core.execution.models import OrderSide, OrderStatus, OrderType
 
 
 class OrderRequest(BaseModel):

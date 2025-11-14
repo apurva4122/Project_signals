@@ -26,6 +26,17 @@ class WebhookSecrets(BaseModel):
     hmac_secret: str | None = None
 
 
+class MotilalSettings(BaseModel):
+    enabled: bool = True
+    api_base: str = "https://openapi.motilaloswal.com"
+    login_base: str = "https://openapi.motilaloswal.com"
+    timeout_seconds: int = 30
+    credentials_path: Path = Field(default=Path("data/brokers/motilal_credentials.json"))
+    default_index_name: str = "NSE"
+    historical_interval_minutes: int = 5
+    historical_lookback_days: int = 60
+
+
 class AppSettings(BaseSettings):
     """Base application settings loaded from environment variables or .env"""
 
@@ -46,10 +57,17 @@ class AppSettings(BaseSettings):
     database: DatabaseSettings = Field(default_factory=DatabaseSettings)
     redis: RedisSettings = Field(default_factory=RedisSettings)
     webhook_secrets: WebhookSecrets = Field(default_factory=WebhookSecrets)
+    motilal: MotilalSettings = Field(default_factory=MotilalSettings)
 
     data_path: Path = Field(default=Path("data"))
     historical_cache_path: Path = Field(default=Path("data/cache"))
     strategy_path: Path = Field(default=Path("backend/strategies"))
+
+    @property
+    def motilal_credentials_file(self) -> Path:
+        path = self.motilal.credentials_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        return path
 
 
 Settings = Annotated[AppSettings, "Application settings singleton"]

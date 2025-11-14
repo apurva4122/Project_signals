@@ -3,7 +3,6 @@ name = "project-signals"
 version = "0.1.0"
 description = "Paper trading and backtesting platform for Indian equities, futures, and options."
 authors = ["Project Signals Team <dev@projectsignals.local>"]
-readme = "README.md"
 packages = [{ include = "app" }, { include = "core" }, { include = "adapters" }, { include = "strategies" }]
 
 [tool.poetry.dependencies]

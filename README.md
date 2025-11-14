@@ -12,6 +12,8 @@ Project Signals is a modular paper trading and backtesting platform tailored for
 
 ## Getting Started
 
+### Backend API
+
 ```bash
 cd backend
 pip install poetry
@@ -19,8 +21,23 @@ poetry install
 poetry run uvicorn app.main:app --reload
 ```
 
-Frontend scaffolding is pending; refer to `docs/architecture.md` for system design details.
+The API is served at `http://localhost:8000` with interactive docs available at `/docs`.
 
-Additional setup guidance and webhook configuration steps are available in `docs/setup.md`.
+### Frontend Console (React + Vite + shadcn-ui)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The development server runs on `http://localhost:5173` and expects the backend to be available at `http://localhost:8000` by default. Set `VITE_API_BASE_URL` in a `.env` file inside `frontend/` to point to another backend.
+
+### Tests
+
+- Backend: `cd backend && poetry run pytest`
+- Frontend: `cd frontend && npm run test -- --run`
+
+See `docs/setup.md` for extended configuration notes, webhook instructions, and troubleshooting tips.
 
 

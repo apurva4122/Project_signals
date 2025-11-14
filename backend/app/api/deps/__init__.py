@@ -3,6 +3,7 @@
 from .dependencies import (
     get_backtesting_service,
     get_instruments_service,
+    get_motilal_service,
     get_registry,
     get_settings_dep,
     get_trading_service,
@@ -12,6 +13,7 @@ from .dependencies import (
 __all__ = [
     "get_backtesting_service",
     "get_instruments_service",
+    "get_motilal_service",
     "get_registry",
     "get_settings_dep",
     "get_trading_service",
