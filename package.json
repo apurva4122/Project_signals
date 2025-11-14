@@ -1,0 +1,29 @@
+{
+    "name": "project-signals",
+    "version": "1.0.0",
+    "description": "Paper trading and backtesting platform for Indian equities, futures, and options",
+    "private": true,
+    "workspaces": [
+        "frontend"
+    ],
+    "scripts": {
+        "build": "cd frontend && npm install && npm run build",
+        "dev": "cd frontend && npm run dev"
+    },
+    "engines": {
+        "node": ">=20.0.0",
+        "npm": ">=10.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "."
+    },
+    "keywords": [
+        "trading",
+        "backtesting",
+        "paper-trading",
+        "indian-markets"
+    ],
+    "author": "",
+    "license": "MIT"
+}
